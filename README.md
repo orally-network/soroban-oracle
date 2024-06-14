@@ -8,6 +8,27 @@ Version 21.0.0-rc.1 fixes error `xdr processing error: xdr value invalid`
 cargo install --locked --version 21.0.0-rc.1 --features opt  soroban-cli
 '''
 
+Configure Soroban-SDK for testnet:
+```
+soroban network add \
+  --global testnet \
+  --rpc-url https://soroban-testnet.stellar.org:443 \
+  --network-passphrase "Test SDF Network ; September 2015"
+
+soroban keys generate --global ${SOROBAN_KEY} --network testnet
+```
+
+Configure Soroban-SDK for mainnet:
+```
+soroban network add \
+  --global mainnet \
+  --rpc-url ${MAINNET_RPC} \
+  --network-passphrase "Public Global Stellar Network ; September 2015"
+
+soroban keys generate --global ${SOROBAN_KEY} --network testnet
+```
+NOTE: SOROBAN_KEY is user name
+
 Install contract wasm and deploy
 ```
 soroban contract build && soroban contract optimize --wasm ${PATH_TO_WASM}
