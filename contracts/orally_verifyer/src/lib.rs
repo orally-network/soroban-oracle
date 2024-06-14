@@ -2,10 +2,12 @@
 
 use alloy_sol_types::SolValue;
 use ethabi::{ParamType, Token};
-use soroban_sdk::{contract, contractimpl, contracttype, log, Address, Bytes, BytesN, Env, String};
+use sol_types::Meta;
+use soroban_sdk::{contract, contractimpl, contracttype, Address, Bytes, BytesN, Env, String};
 use utils::{check_owner, check_reporter, has_owner, set_owner, to_lowercase};
 
 mod ecdsa;
+mod sol_types;
 mod utils;
 
 #[contract]
@@ -29,19 +31,25 @@ impl OrallyVerifyer {
     }
 
     fn verify(env: &Env, generic_bytes: Token, meta_bytes: Token, signature_bytes: Token) -> Bytes {
-        let message = (
-            generic_bytes.clone().into_bytes().unwrap(),
-            meta_bytes.into_bytes().unwrap(),
-        );
+        let generic_bytes = generic_bytes.into_bytes().unwrap();
+        let meta_bytes = meta_bytes.into_bytes().unwrap();
+        let signature_bytes = signature_bytes.into_bytes().unwrap();
+
+        let message = (generic_bytes.clone(), meta_bytes.clone());
+
+        let meta = Meta::abi_decode(&meta_bytes, false).unwrap();
+
+        if meta.fee > alloy_sol_types::private::u256(0) {
+            panic!("Fee is not zero")
+        }
 
         let encode_packed = message.abi_encode_packed();
 
-        let reporter_address =
-            ecdsa::recover(env, &encode_packed, &signature_bytes.into_bytes().unwrap());
-        log!(&env, "Reporter address: {}", reporter_address);
+        let reporter_address = ecdsa::recover(env, &encode_packed, &signature_bytes);
+
         check_reporter(&env, reporter_address);
 
-        Bytes::from_slice(env, &generic_bytes.into_bytes().unwrap())
+        Bytes::from_slice(env, &generic_bytes)
     }
 
     pub fn verify_generic(env: &Env, data: Bytes) -> Bytes {

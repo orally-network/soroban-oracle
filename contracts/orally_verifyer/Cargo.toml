@@ -17,7 +17,8 @@ ethabi = { version = "18.0.0", default-features = false }
 soroban-sdk = { workspace = true }
 getrandom = { version = "0.2.0", features = ["js"] }
 alloy-sol-types = { version = "0.7.6", default-features = false }
-alloy-core = "0.7.6"
+hex = { version = "0.4.3", default-features = false }
+# alloy-core = "0.7.6"
 
 
 [dev-dependencies]

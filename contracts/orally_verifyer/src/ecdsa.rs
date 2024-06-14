@@ -1,4 +1,3 @@
-use alloy_core::hex;
 use soroban_sdk::{Bytes, BytesN, Env, String};
 
 const UTF8_0X_PREFIX: [u8; 2] = [0x30, 0x78];

@@ -33,7 +33,7 @@ Install contract wasm and deploy
 ```
 soroban contract build && soroban contract optimize --wasm ${PATH_TO_WASM} && \
 WASM_HASH=$(soroban contract install --network ${NETWORK} --source ${SOROBAN_KEY} --wasm ${PATH_TO_WASM}) && \
-soroban contract deploy  --network ${NETWORK} --source ${SOROBAN_KEY} --wasm-hash ${WASM_HASH} && \
+CONTRACT_ID=$(soroban contract deploy  --network ${NETWORK} --source ${SOROBAN_KEY} --wasm-hash ${WASM_HASH}) && \
 soroban contract invoke  --network ${NETWORK} --source ${SOROBAN_KEY} --id ${CONTRACT_ID} -- init --owner ${SOROBAN_KEY}
 ```
 
@@ -48,6 +48,10 @@ soroban contract invoke  --network ${NETWORK} --source ${SOROBAN_KEY} --id ${CON
 Example of usage
 ```
 soroban contract invoke  --network ${NETWORK} --source ${SOROBAN_KEY} --id ${CONTRACT_ID} -- is_reporter --address "0x61E9658dFE7c620E96ae41f97b89B079Ef7ECd1A"
+
+soroban contract invoke  --network ${NETWORK} --source ${SOROBAN_KEY} --id ${CONTRACT_ID} -- add_reporter --address "0x61E9658dFE7c620E96ae41f97b89B079Ef7ECd1A"
+
+soroban contract invoke  --network ${NETWORK} --source ${SOROBAN_KEY} --id ${CONTRACT_ID} -- remove_reporter --address "0x61E9658dFE7c620E96ae41f97b89B079Ef7ECd1A"
 
 soroban contract invoke  --network ${NETWORK} --source ${SOROBAN_KEY} --id ${CONTRACT_ID} -- verify_generic --data ${TEST_GET_XRC_DATA_BYTES}
 

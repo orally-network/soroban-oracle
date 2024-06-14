@@ -27,15 +27,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "alloy-core"
-version = "0.7.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5af3faff14c12c8b11037e0a093dd157c3702becb8435577a2408534d0758315"
-dependencies = [
- "alloy-primitives",
-]
-
-[[package]]
 name = "alloy-primitives"
 version = "0.7.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1107,11 +1098,11 @@ dependencies = [
 name = "orally-verifyer"
 version = "0.0.0"
 dependencies = [
- "alloy-core",
  "alloy-sol-types",
  "ethabi",
  "ethers-core",
  "getrandom",
+ "hex",
  "soroban-sdk",
 ]
 
