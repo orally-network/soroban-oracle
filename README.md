@@ -31,9 +31,10 @@ NOTE: SOROBAN_KEY is user name
 
 Install contract wasm and deploy
 ```
-soroban contract build && soroban contract optimize --wasm ${PATH_TO_WASM}
-WASM_HASH=$(soroban contract install --network ${NETWORK} --source ${SOROBAN_KEY} --wasm ${PATH_TO_WASM})
-soroban contract deploy  --network ${NETWORK} --source ${SOROBAN_KEY} --wasm-hash ${WASM_HASH}      
+soroban contract build && soroban contract optimize --wasm ${PATH_TO_WASM} && \
+WASM_HASH=$(soroban contract install --network ${NETWORK} --source ${SOROBAN_KEY} --wasm ${PATH_TO_WASM}) && \
+soroban contract deploy  --network ${NETWORK} --source ${SOROBAN_KEY} --wasm-hash ${WASM_HASH} && \
+soroban contract invoke  --network ${NETWORK} --source ${SOROBAN_KEY} --id ${CONTRACT_ID} -- init --owner ${SOROBAN_KEY}
 ```
 
 Upgrade contract 
