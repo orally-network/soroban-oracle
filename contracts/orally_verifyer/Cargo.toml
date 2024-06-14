@@ -1,0 +1,26 @@
+[package]
+name = "orally-verifyer"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+doctest = false
+
+[features]
+default = ["js"]
+js = []
+
+[dependencies]
+ethabi = { version = "18.0.0", default-features = false }
+soroban-sdk = { workspace = true }
+getrandom = { version = "0.2.0", features = ["js"] }
+alloy-sol-types = { version = "0.7.6", default-features = false }
+alloy-core = "0.7.6"
+
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+ethers-core = "2.0.14"
+ethabi = { version = "18.0.0", default-features = false }
