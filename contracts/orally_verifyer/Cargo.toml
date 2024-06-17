@@ -1,6 +1,6 @@
 [package]
 name = "orally-verifyer"
-version = "0.0.0"
+version = "0.0.1"
 edition = "2021"
 publish = false
 
@@ -18,7 +18,6 @@ soroban-sdk = { workspace = true }
 getrandom = { version = "0.2.0", features = ["js"] }
 alloy-sol-types = { version = "0.7.6", default-features = false }
 hex = { version = "0.4.3", default-features = false }
-# alloy-core = "0.7.6"
 
 
 [dev-dependencies]

@@ -1096,12 +1096,21 @@ dependencies = [
 
 [[package]]
 name = "orally-verifyer"
-version = "0.0.0"
+version = "0.0.1"
 dependencies = [
  "alloy-sol-types",
  "ethabi",
  "ethers-core",
  "getrandom",
+ "hex",
+ "soroban-sdk",
+]
+
+[[package]]
+name = "orally-verifyer-example"
+version = "0.0.1"
+dependencies = [
+ "ethabi",
  "hex",
  "soroban-sdk",
 ]

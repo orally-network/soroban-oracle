@@ -1,0 +1,18 @@
+[package]
+name = "orally-verifyer-example"
+version = "0.0.1"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = { workspace = true }
+
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+ethabi = { version = "18.0.0", default-features = false }
+hex = { version = "0.4.3", default-features = false }

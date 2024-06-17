@@ -3,7 +3,6 @@ use soroban_sdk::{Address, Env, IntoVal, String, TryFromVal, Val};
 use crate::DataKey;
 
 extern crate alloc;
-extern crate core;
 
 pub fn get_instance<K, V>(env: &Env, key: &K) -> Option<V>
 where

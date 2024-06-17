@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["contracts/*"]
+members = ["contracts/*", "examples/*"]
 
 [workspace.dependencies]
 soroban-sdk = { version = "20.3.2", features = ["alloc"] }
